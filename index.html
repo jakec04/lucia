@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucia Preziosi &mdash; reporter, Chicago</title>
+<meta name="description" content="Lucia Preziosi is a Chicago reporter covering arts, culture and neighborhood news.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff;
+  --ink:#14110F;
+  --soft:#6B665F;
+  --red:#D2042D;
+  --blush:#F9F0F1;
+  --rule:#E5E2DB;
+  --rail:6.5rem;
+  --gap-rail:clamp(1.75rem,3.5vw,3rem);
+  --gap-section:clamp(2.25rem,4.5vw,3.5rem);
+  --grot:"Bricolage Grotesque",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);overflow-x:hidden;
+  font-family:"Newsreader",Georgia,serif;font-weight:400;
+  font-size:1.125rem;line-height:1.6;font-variant-numeric:oldstyle-nums;
+}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:1.5px solid var(--red);outline-offset:4px}
+.page{width:min(960px,88vw);margin-inline:auto;padding-block:clamp(2rem,5vw,4rem) clamp(3rem,7vw,6rem)}
+
+/* stars: roughened edges, hand-stamped angles */
+.star{width:1em;height:1em;fill:var(--red);flex:none;transform-box:fill-box;transform-origin:center}
+.flag .star:nth-of-type(1){transform:rotate(-9deg)}
+.flag .star:nth-of-type(2){transform:rotate(6deg)}
+.flag .star:nth-of-type(3){transform:rotate(-4deg)}
+.flag .star:nth-of-type(4){transform:rotate(11deg)}
+.featured:nth-of-type(even) .star{transform:rotate(-7deg)}
+.featured:nth-of-type(odd) .star{transform:rotate(5deg)}
+.takes li:nth-child(2) .star{transform:rotate(-8deg)}
+.takes li:nth-child(3) .star{transform:rotate(9deg)}
+
+/* letterhead */
+.letterhead{margin-bottom:var(--gap-section)}
+.flag{display:flex;align-items:center;gap:.5rem;margin-bottom:1rem}
+.flag .star{width:1.05rem;height:1.05rem}
+.flag span{
+  font-family:var(--grot);font-weight:600;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--soft);margin-left:.4rem;
+}
+.letterhead h1{
+  font-family:var(--grot);font-weight:800;color:var(--red);
+  font-size:clamp(2.75rem,13vw,8.5rem);line-height:.82;letter-spacing:-.045em;
+  text-transform:uppercase;margin:0;
+}
+.tag{
+  font-family:var(--grot);font-weight:600;font-size:clamp(.78rem,.7rem + .3vw,1rem);
+  text-transform:uppercase;margin:1rem 0 0;line-height:1.5;
+}
+.tag b{color:var(--red);font-weight:600}
+
+/* opening */
+.opening{
+  display:grid;grid-template-columns:clamp(120px,17vw,175px) minmax(0,1fr);
+  gap:var(--gap-rail);align-items:start;margin-block:var(--gap-section);
+}
+.portrait{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#F2EFEA}
+.lede{font-size:clamp(1.3rem,1rem + 1.3vw,1.95rem);font-weight:300;line-height:1.3;margin:0;max-width:26ch}
+.lede + .lede{margin-top:.85rem;font-size:1.0625rem;line-height:1.55;color:var(--soft);max-width:46ch}
+
+/* rails */
+.rail{
+  display:grid;grid-template-columns:var(--rail) minmax(0,64ch);
+  gap:0 var(--gap-rail);
+  padding-top:1.15rem;border-top:1.5px solid var(--ink);
+  margin-bottom:var(--gap-section);
+}
+.rail > h2{
+  grid-column:1;grid-row:1;margin:0;text-align:right;line-height:1.15;
+  font-family:var(--grot);font-weight:600;text-transform:uppercase;overflow-wrap:break-word;
+}
+.rail > .stack{grid-column:2;grid-row:1;list-style:none;margin:0;padding:0}
+.rail.dated > h2{font-size:1.15rem;letter-spacing:-.01em;color:var(--red)}
+.rail.titled > h2{font-size:.72rem;letter-spacing:.14em;color:var(--soft);padding-top:.4rem}
+
+.clip + .clip{margin-top:clamp(1.35rem,2.5vw,2rem)}
+.clip h3{margin:0;font-weight:400;line-height:1.25;font-size:clamp(1.15rem,1.05rem + .5vw,1.45rem)}
+.clip h3 a{border-bottom:1px solid var(--rule);padding-bottom:1px}
+.clip h3 a:hover{color:var(--red);border-bottom-color:var(--red)}
+.meta{margin:.3rem 0 0;color:var(--soft);font-size:1rem;font-style:italic;line-height:1.4}
+.meta b{font-weight:400;font-style:normal;color:var(--ink)}
+/* featured: star sits inside the column, no negative offsets to clip */
+.featured{display:flex;gap:.8rem;align-items:flex-start}
+.featured .star{width:.95rem;height:.95rem;margin-top:.5rem}
+.featured h3{font-size:clamp(1.3rem,1.1rem + .8vw,1.8rem);line-height:1.18}
+
+/* commission band, full bleed at every width */
+.band{
+  background:var(--blush);
+  margin-inline:calc(50% - 50vw);padding-inline:calc(50vw - 50%);
+  margin-block:var(--gap-section);
+}
+.band .rail{border-top:0;margin-bottom:0;padding-block:clamp(1.75rem,3.5vw,2.75rem)}
+.takes{margin:0;padding:0;list-style:none}
+.takes li{display:flex;gap:.8rem;align-items:flex-start}
+.takes li + li{margin-top:.9rem}
+.takes .star{width:.9rem;height:.9rem;margin-top:.35rem}
+.takes b{font-family:var(--grot);font-weight:600;font-size:1rem;text-transform:uppercase;line-height:1.35}
+.terms{margin:1.5rem 0 0;color:var(--soft);font-size:1.0625rem;max-width:52ch}
+
+.contact p{margin:0 0 .85rem}
+.contact a{color:var(--red);border-bottom:1px solid var(--rule);padding-bottom:1px}
+.contact a:hover{border-bottom-color:var(--red)}
+.foot{margin-top:2rem;font-size:.95rem;font-style:italic;color:var(--soft)}
+
+/* mid sizes: pull the rail label column in before it eats the text column */
+@media (max-width:900px){
+  :root{--rail:5rem}
+  .rail.titled > h2{font-size:.68rem;letter-spacing:.1em}
+}
+@media (max-width:680px){
+  .page{width:min(960px,90vw)}
+  .opening{grid-template-columns:1fr;gap:1.25rem}
+  .portrait{max-width:150px}
+  .lede,.lede + .lede{max-width:none}
+  .rail{grid-template-columns:1fr;gap:.65rem}
+  .rail > h2,.rail > .stack{grid-column:1;grid-row:auto;text-align:left}
+  .letterhead h1{font-size:clamp(2.5rem,15vw,4.5rem)}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="2" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <symbol id="s" viewBox="0 0 100 100">
+    <polygon filter="url(#rough)" points="50.00,4.77 61.23,39.32 97.55,39.32 68.16,60.68 79.39,95.23 50.00,73.87 20.61,95.23 31.84,60.68 2.45,39.32 38.77,39.32"/>
+  </symbol>
+</svg>
+
+<div class="page">
+
+  <header class="letterhead">
+    <div class="flag" aria-hidden="true">
+      <svg class="star"><use href="#s"/></svg>
+      <svg class="star"><use href="#s"/></svg>
+      <svg class="star"><use href="#s"/></svg>
+      <svg class="star"><use href="#s"/></svg>
+      <span>Chicago</span>
+    </div>
+    <h1>Lucia<br>Preziosi</h1>
+    <p class="tag">Lorem ipsum &middot; Dolor sit amet consectetur &middot; <b>Adipiscing elit sed</b></p>
+  </header>
+
+  <section class="opening">
+    <img class="portrait" src="images/profile.jpeg" alt="Lucia Preziosi">
+    <div>
+      <p class="lede">Lorem ipsum dolor sit amet. Consectetur adipiscing elit sed do.</p>
+      <p class="lede">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </section>
+
+  <section class="rail titled" aria-label="Selected work">
+    <ol class="stack">
+      <li class="clip featured">
+        <svg class="star" aria-hidden="true"><use href="#s"/></svg>
+        <div>
+          <h3><a href="https://blockclubchicago.org/2026/06/05/explore-10-endangered-music-venues-with-logan-square-preservation-pastport-tour/">Explore 10 Endangered Music Venues With Logan Square Preservation &lsquo;PastPort&rsquo; Tour</a></h3>
+          <p class="meta"><b>Block Club Chicago</b>, June 2026</p>
+        </div>
+      </li>
+      <li class="clip featured">
+        <svg class="star" aria-hidden="true"><use href="#s"/></svg>
+        <div>
+          <h3><a href="https://blockclubchicago.org/2026/04/14/joyce-foundation-offering-more-funding-for-great-lakes-artists/">Joyce Foundation Offering More Funding For Great Lakes Artists</a></h3>
+          <p class="meta"><b>Block Club Chicago</b>, April 2026</p>
+        </div>
+      </li>
+      <li class="clip featured">
+        <svg class="star" aria-hidden="true"><use href="#s"/></svg>
+        <div>
+          <h3><a href="https://blockclubchicago.org/2026/05/26/the-ultimate-chicago-summer-guide-2026-festivals-parades-markets-and-more/">The Ultimate Chicago Summer Guide 2026: Festivals, Parades, Markets And More</a></h3>
+          <p class="meta"><b>Block Club Chicago</b>, May 2026</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="rail dated">
+    <h2>July 2026</h2>
+    <ol class="stack">
+      <li class="clip">
+        <h3><a href="https://blockclubchicago.org/2026/07/23/30-things-to-do-in-chicago-this-weekend-gospel-fest-taste-of-bronzeville-wicker-park-fest/">30 Things To Do In Chicago This Weekend: Gospel Fest, Taste Of Bronzeville, Wicker Park Fest</a></h3>
+        <p class="meta"><b>Block Club Chicago</b>, July 23</p>
+      </li>
+      <li class="clip">
+        <h3><a href="https://blockclubchicago.org/2026/07/02/21-things-to-do-in-chicago-this-weekend-navy-pier-fireworks-pride-south-side-and-more/">21 Things To Do In Chicago This Weekend: Navy Pier Fireworks, Pride South Side And More</a></h3>
+        <p class="meta"><b>Block Club Chicago</b>, July 2</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="rail dated">
+    <h2>June 2026</h2>
+    <ol class="stack">
+      <li class="clip">
+        <h3><a href="https://blockclubchicago.org/2026/06/25/27-things-to-do-in-chicago-this-weekend-pride-parade-ida-b-wells-festival-and-more/">26 Things To Do In Chicago This Weekend: Pride Parade, Ida B. Wells Festival And More</a></h3>
+        <p class="meta"><b>Block Club Chicago</b>, June 25</p>
+      </li>
+      <li class="clip">
+        <h3><a href="https://blockclubchicago.org/2026/06/18/28-things-to-do-in-chicago-this-weekend-pride-fest-juneteenth-and-obama-center-open-house/">28 Things To Do In Chicago This Weekend: Pride Fest, Juneteenth And Obama Center Open House</a></h3>
+        <p class="meta"><b>Block Club Chicago</b>, June 18</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="rail dated">
+    <h2>May 2026</h2>
+    <ol class="stack">
+      <li class="clip">
+        <h3><a href="https://blockclubchicago.org/2026/05/29/chicago-pride-2026-events-guide-how-to-have-the-gayest-june-ever/">Chicago Pride 2026 Events Guide: How To Have The Gayest June Ever</a></h3>
+        <p class="meta"><b>Block Club Chicago</b>, May 29</p>
+      </li>
+    </ol>
+  </section>
+
+  <div class="band">
+    <section class="rail titled">
+      <h2>Commission me</h2>
+      <div class="stack">
+        <ul class="takes">
+          <li>
+            <svg class="star" aria-hidden="true"><use href="#s"/></svg>
+            <b>Lorem ipsum dolor sit</b>
+          </li>
+          <li>
+            <svg class="star" aria-hidden="true"><use href="#s"/></svg>
+            <b>Sed do eiusmod tempor</b>
+          </li>
+          <li>
+            <svg class="star" aria-hidden="true"><use href="#s"/></svg>
+            <b>Ut enim ad minim veniam</b>
+          </li>
+        </ul>
+        <p class="terms">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="rail titled contact">
+    <h2>Get in touch</h2>
+    <div class="stack">
+      <p>Lorem ipsum dolor sit amet: <a href="mailto:REPLACE@example.com">REPLACE@example.com</a></p>
+      <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+      <p class="foot">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
